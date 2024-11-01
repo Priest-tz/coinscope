@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { setSearchQuery } from "../redux/slice/cryptoslice";
 import { toggleTheme, selectTheme } from "../redux/slice/themeslice";
+import logo from "../assets/logo.svg";
 
 const Navbar = () => {
 	const dispatch = useDispatch();
@@ -16,50 +17,46 @@ const Navbar = () => {
 		<nav
 			className={`sticky top-0 z-50 w-full border-b ${
 				theme === "dark"
-					? "bg-gray-900 border-gray-800"
-					: "bg-white border-gray-200"
+					? "bg-gray-900 border-gray-800 text-white"
+					: "bg-white border-gray-200 text-gray-800"
 			}`}>
 			<div className="container mx-auto px-4">
-				<div className="flex justify-between items-center h-16">
-					{/* Logo*/}
-					<div className="flex items-center">
-						<h1 className="text-2xl font-bold">CoinScope</h1>
+				<div className="flex items-center justify-between h-20">
+					{/* Logo */}
+					<div className="flex-shrink-0">
+						<img
+							src={logo}
+							alt="Company Logo"
+							className="h-10 w-auto"
+						/>
 					</div>
 
-					{/* Desktop Navigation Items */}
-					<div className="hidden md:flex gap-4 items-center">
+					{/* Desktop Navigation */}
+					<div className="hidden lg:flex items-center space-x-8 ml-8">
 						<a
 							href="#cryptocurrencies"
-							className={`${
-								theme === "dark" ? "text-white" : "text-black"
-							}`}>
+							className="hover:text-blue-500 transition-colors">
 							Cryptocurrencies
 						</a>
 						<a
 							href="#exchange"
-							className={`${
-								theme === "dark" ? "text-white" : "text-black"
-							}`}>
+							className="hover:text-blue-500 transition-colors">
 							Exchange
 						</a>
 						<a
 							href="#nft"
-							className={`${
-								theme === "dark" ? "text-white" : "text-black"
-							}`}>
+							className="hover:text-blue-500 transition-colors">
 							NFT
 						</a>
 						<a
 							href="#products"
-							className={`${
-								theme === "dark" ? "text-white" : "text-black"
-							}`}>
+							className="hover:text-blue-500 transition-colors">
 							Products
 						</a>
 					</div>
 
-					{/* Search Bar */}
-					<div className="flex-1 mx-4 hidden md:block">
+					{/* Search Bar - Desktop */}
+					<div className="hidden lg:flex flex-1 justify-center px-8">
 						<input
 							type="text"
 							placeholder="Search coins..."
@@ -67,7 +64,7 @@ const Navbar = () => {
 							onChange={(e) =>
 								dispatch(setSearchQuery(e.target.value))
 							}
-							className={`px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500 w-64 ${
+							className={`px-4 py-2 rounded-lg border w-96 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
 								theme === "dark"
 									? "bg-gray-800 border-gray-700 text-white"
 									: "bg-white border-gray-300 text-black"
@@ -75,12 +72,21 @@ const Navbar = () => {
 						/>
 					</div>
 
-					{/* Right Side Buttons: Theme Toggle */}
-					<div className="flex items-center gap-4">
-						{/* Theme Toggle */}
+					{/* Right Side Items - Desktop */}
+					<div className="hidden lg:flex items-center space-x-4">
+						<a
+							href="#login"
+							className="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+							Login
+						</a>
+						<a
+							href="#signup"
+							className="px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 text-white transition-colors">
+							Sign Up
+						</a>
 						<button
 							onClick={() => dispatch(toggleTheme())}
-							className={`p-3 rounded-lg transition-colors ${
+							className={`p-2 rounded-lg transition-colors ${
 								theme === "dark"
 									? "hover:bg-gray-700 text-yellow-300"
 									: "hover:bg-gray-200 text-yellow-500"
@@ -92,54 +98,85 @@ const Navbar = () => {
 								<Moon className="w-6 h-6" />
 							)}
 						</button>
+					</div>
 
-						{/* Hamburger Menu for Mobile */}
+					{/* Theme Button - Mobile */}
+					<div className="lg:hidden">
+						<button
+							onClick={() => dispatch(toggleTheme())}
+							className={`p-2 rounded-lg transition-colors ${
+								theme === "dark"
+									? "hover:bg-gray-700 text-yellow-300"
+									: "hover:bg-gray-200 text-yellow-500"
+							}`}
+							aria-label="Toggle theme">
+							{theme === "dark" ? (
+								<Sun className="w-6 h-6" />
+							) : (
+								<Moon className="w-6 h-6" />
+							)}
+						</button>
+					</div>
+
+					{/* Mobile Menu Button */}
+					<div className="lg:hidden flex ">
 						<button
 							onClick={toggleMobileMenu}
-							className="md:hidden p-2">
+							className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
 							{isMobileMenuOpen ? (
-								<X className="w-6 h-6 text-gray-700" />
+								<X className="w-8 h-8" />
 							) : (
-								<Menu className="w-6 h-6 text-gray-700" />
+								<Menu className="w-8 h-8" />
 							)}
 						</button>
 					</div>
 				</div>
 
-				{/* Mobile Menu */}
+				{/* Mobile Menu with Slide Down Animation */}
 				{isMobileMenuOpen && (
-					<div className="md:hidden flex flex-col gap-4 pt-4 pb-6 bg-gray-100 dark:bg-gray-900">
-						<a
-							href="#cryptocurrencies"
-							className="text-gray-700 dark:text-white px-4">
-							Cryptocurrencies
-						</a>
-						<a
-							href="#exchange"
-							className="text-gray-700 dark:text-white px-4">
-							Exchange
-						</a>
-						<a
-							href="#nft"
-							className="text-gray-700 dark:text-white px-4">
-							NFT
-						</a>
-						<a
-							href="#products"
-							className="text-gray-700 dark:text-white px-4">
-							Products
-						</a>
-						{/* Login and Sign Up buttons moved inside mobile menu */}
-						<a
-							href="#login"
-							className="text-gray-700 dark:text-white px-4">
-							Login
-						</a>
-						<a
-							href="#signup"
-							className="px-4 py-2 rounded-lg bg-blue-500 text-white mx-4">
-							Sign Up
-						</a>
+					<div
+						className={`lg:hidden fixed inset-x-0 top-20 transition-transform transform ${
+							isMobileMenuOpen
+								? "translate-y-0"
+								: "-translate-y-full"
+						} ${
+							theme === "dark" ? "bg-gray-900" : "bg-white"
+						} shadow-lg`}>
+						{/* Mobile Navigation Links */}
+						<div className="p-4 space-y-4">
+							<a
+								href="#cryptocurrencies"
+								className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">
+								Cryptocurrencies
+							</a>
+							<a
+								href="#exchange"
+								className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">
+								Exchange
+							</a>
+							<a
+								href="#nft"
+								className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">
+								NFT
+							</a>
+							<a
+								href="#products"
+								className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">
+								Products
+							</a>
+							<div className="flex flex-col items-center space-y-3 mt-4">
+								<a
+									href="#login"
+									className="block w-full px-4 py-2 text-center rounded-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800">
+									Login
+								</a>
+								<a
+									href="#signup"
+									className="block w-full px-4 py-2 text-center rounded-lg bg-blue-500 hover:bg-blue-600 text-white">
+									Sign Up
+								</a>
+							</div>
+						</div>
 					</div>
 				)}
 			</div>

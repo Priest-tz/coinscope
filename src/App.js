@@ -1,4 +1,4 @@
-import CoinsPage from "./components/cryptotable";
+import CoinsPage from "./pages/coinpage";
 
 function App() {
 	return (
