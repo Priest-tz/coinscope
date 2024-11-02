@@ -37,7 +37,7 @@ export const CoinTable = ({ coins, theme, onSort, onCoinDetails }) => {
 									className={`h-[${rowHeight}]`}
 								/>
 							))}
-							{/* Add empty rows to ensure consistent height */}
+
 							{coins.length < 10 &&
 								[...Array(10 - coins.length)].map((_, i) => (
 									<tr

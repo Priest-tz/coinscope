@@ -20,37 +20,31 @@ const Navbar = () => {
 					? "bg-gray-900 border-gray-800 text-white"
 					: "bg-white border-gray-200 text-gray-800"
 			}`}>
-			<div className="container mx-auto px-4">
+			<div className=" mx-auto px-4 md:px-10">
 				<div className="flex items-center justify-between h-20">
 					{/* Logo */}
 					<div className="flex-shrink-0">
 						<img
 							src={logo}
 							alt="Company Logo"
-							className="h-10 w-auto"
+							className="h-12 w-auto"
 						/>
 					</div>
 
 					{/* Desktop Navigation */}
-					<div className="hidden lg:flex items-center space-x-8 ml-8">
+					<div className="hidden lg:flex items-center space-x-6 ml-8">
 						<a
 							href="#cryptocurrencies"
-							className="hover:text-blue-500 transition-colors">
+							className="text-base font-light">
 							Cryptocurrencies
 						</a>
-						<a
-							href="#exchange"
-							className="hover:text-blue-500 transition-colors">
+						<a href="#exchange" className="text-base font-light">
 							Exchange
 						</a>
-						<a
-							href="#nft"
-							className="hover:text-blue-500 transition-colors">
+						<a href="#nft" className="text-base font-light">
 							NFT
 						</a>
-						<a
-							href="#products"
-							className="hover:text-blue-500 transition-colors">
+						<a href="#products" className="text-base font-light">
 							Products
 						</a>
 					</div>
@@ -76,12 +70,12 @@ const Navbar = () => {
 					<div className="hidden lg:flex items-center space-x-4">
 						<a
 							href="#login"
-							className="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+							className="px-8 py-2 rounded-md border text-sm hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
 							Login
 						</a>
 						<a
 							href="#signup"
-							className="px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 text-white transition-colors">
+							className="text-sm px-8 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 text-white transition-colors">
 							Sign Up
 						</a>
 						<button
@@ -100,8 +94,9 @@ const Navbar = () => {
 						</button>
 					</div>
 
-					{/* Theme Button - Mobile */}
-					<div className="lg:hidden">
+					{/* Mobile Menu and Theme Button */}
+					<div className="lg:hidden flex items-center space-x-2">
+						{/* Theme Button */}
 						<button
 							onClick={() => dispatch(toggleTheme())}
 							className={`p-2 rounded-lg transition-colors ${
@@ -116,23 +111,21 @@ const Navbar = () => {
 								<Moon className="w-6 h-6" />
 							)}
 						</button>
-					</div>
 
-					{/* Mobile Menu Button */}
-					<div className="lg:hidden flex ">
+						{/* Mobile Menu Button */}
 						<button
 							onClick={toggleMobileMenu}
 							className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
 							{isMobileMenuOpen ? (
-								<X className="w-8 h-8" />
+								<X className="w-9 h-9" />
 							) : (
-								<Menu className="w-8 h-8" />
+								<Menu className="w-9 h-9" />
 							)}
 						</button>
 					</div>
 				</div>
 
-				{/* Mobile Menu with Slide Down Animation */}
+				{/* Mobile Menu */}
 				{isMobileMenuOpen && (
 					<div
 						className={`lg:hidden fixed inset-x-0 top-20 transition-transform transform ${
@@ -146,33 +139,33 @@ const Navbar = () => {
 						<div className="p-4 space-y-4">
 							<a
 								href="#cryptocurrencies"
-								className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">
+								className="block text-base px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">
 								Cryptocurrencies
 							</a>
 							<a
 								href="#exchange"
-								className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">
+								className="block text-base px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">
 								Exchange
 							</a>
 							<a
 								href="#nft"
-								className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">
+								className="block text-base px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">
 								NFT
 							</a>
 							<a
 								href="#products"
-								className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">
+								className="block text-base px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800">
 								Products
 							</a>
 							<div className="flex flex-col items-center space-y-3 mt-4">
 								<a
 									href="#login"
-									className="block w-full px-4 py-2 text-center rounded-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800">
+									className="block text-sm w-full px-4 py-3 text-center rounded-md border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800">
 									Login
 								</a>
 								<a
 									href="#signup"
-									className="block w-full px-4 py-2 text-center rounded-lg bg-blue-500 hover:bg-blue-600 text-white">
+									className="block text-sm w-full px-4 py-3 text-center rounded-md bg-blue-500 hover:bg-blue-600 text-white">
 									Sign Up
 								</a>
 							</div>

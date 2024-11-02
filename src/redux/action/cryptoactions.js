@@ -28,12 +28,3 @@ export const fetchCoinById = createAsyncThunk(
 		}
 	}
 );
-
-
-// import { useDispatch } from 'react-redux';
-// import { fetchAllCoins, fetchCoinById } from './cryptoActions';
-
-// const dispatch = useDispatch();
-// dispatch(fetchAllCoins({ start: 0, limit: 100 }));
-// dispatch(fetchCoinById(90)); 
-
