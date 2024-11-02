@@ -1,0 +1,32 @@
+<svg viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
+
+  <g transform="translate(20, 5)">
+    <path d="M30 0 L60 17.32 L60 51.96 L30 69.28 L0 51.96 L0 17.32 Z"
+      fill="#1d4ed8" />
+
+    <path d="M30 10 L50 22 L50 46 L30 58 L10 46 L10 22 Z"
+      fill="#3b82f6" />
+
+
+    <circle cx="30" cy="34" r="12"
+      fill="none"
+      stroke="#93c5fd"
+      stroke-width="3" />
+
+    <circle cx="30" cy="34" r="2" fill="white" />
+    <circle cx="38" cy="30" r="2" fill="white" />
+    <circle cx="25" cy="42" r="2" fill="white" />
+
+    <path d="M30 34 L38 30 L25 42"
+      stroke="white"
+      stroke-width="1"
+      fill="none" />
+  </g>
+
+  <defs>
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6" />
+      <stop offset="100%" style="stop-color:#1d4ed8" />
+    </linearGradient>
+  </defs>
+</svg>
